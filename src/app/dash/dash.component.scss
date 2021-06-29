@@ -1,0 +1,76 @@
+.dash-container{
+    margin: 0 !important;
+    padding: 0 !important;
+    justify-content: space-evenly;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    .part{
+        background: rgb(53, 53, 53);
+        margin: 10px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .brand{
+            font-family: 'Poppins';
+            font-size: 2em;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 2px;
+            text-shadow: 0 10px 30px solid black;
+        }
+        hr{
+            border: 1px solid white;
+            width: 90%;
+            box-shadow: 0 0 40px black;
+            background: white;
+        }
+        .nav-links{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            ul{
+                margin: 0;
+                padding: 0;
+                li{
+                    list-style: none;
+                    text-align: center;
+                    a{
+                        text-decoration: none;
+                        color: white;
+                        font-size: 18px;
+                        font-weight: 500;
+                        border-radius: 20px;
+                        padding: 10px 30px;
+                        transition: 0.25s;
+                        font-family: 'Poppins';
+                        line-height: 4em;
+                        &.active,&:hover{
+                            background: white;
+                            color: rgb(20, 20, 20);
+                        }
+                        i{
+                            font-size: 20px;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+    .main{
+        margin: 10px;
+        margin-right: 20px;
+        border: 2px solid rgb(80, 80, 80);
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
