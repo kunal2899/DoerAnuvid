@@ -1,3 +1,62 @@
+.blur{
+    filter: blur(10px);
+}
+.card-main{
+    position: fixed;
+    width: 500px;
+    max-width: 600px;
+    height: 85%;
+    top: 50%;
+    left: 50%;
+    padding: 30px;
+    z-index: 990;
+    background: white;
+    transform: translate(-50%,-60%);
+    transition: 0.5s;
+    visibility: hidden;
+    opacity: 0;
+    &.active{
+        visibility: visible;
+    opacity: 1;
+    transform: translate(-50%,calc(-50% + 30px));
+    }
+    .s_name{
+        font-size: 3em;
+    }
+    .scat{
+        font-weight: 400;
+    }
+    .pname{
+        font-size: 1.5em;
+    }
+    .contact,.city,.rating,.address{
+        margin: 10px 0;
+        font-weight: 400;
+        font-size: 1.3em;
+    }
+    .contact,.address2{
+        font-size: 1.1em;
+        font-weight: 400;
+        span{
+            margin-left: 10px;
+        }
+    }
+    .cdetails{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .partition{
+            width: 1px;
+            height: 100px;
+            opacity: 0.3;
+            border: 1px solid rgb(61, 61, 61);
+            background: rgb(77, 77, 77);
+        }
+    }
+    .rating{
+        text-align: right;
+    }
+}
 .container{
     width: 600px;
     .search{
@@ -63,6 +122,67 @@
                 font-size: 18px;
                 margin-top: 10px;
             }
+        }
+    }
+}
+.results{
+    width: 75vw;
+    margin-top: 60px;
+    .card{
+        width: 250px;
+        margin: 20px 10px;
+        height: 270px;
+        padding: 20px;
+        transition: .25s;
+        .open{
+            background: rgb(27, 27, 27);
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: 'Montserrat';
+            font-weight: 600;
+            border-radius:50% ;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            opacity: 0;
+            visibility: hidden;
+            transition: .25s;
+        }
+        &:hover > .content{
+            filter: blur(2px);
+        }
+        &:hover > .open{
+            opacity: 1;
+            visibility: visible;
+            filter: blur(0);
+        }
+        .s_name{
+            font-size: 25px;
+        }
+        .scat{
+            font-size: 17px;
+            font-weight: 400;
+        }
+        .pname{
+            font-size: 17px;
+            font-weight: 500;
+        }
+        .contact,.city{
+            font-size: 16px;
+            font-weight: 400;
+        }
+        .rating{
+            position: relative;
+            left: 30%;
+            margin-top: 20px;
+            width:  fit-content;
+            font-size: 16px;
+            font-weight: 400;
         }
     }
 }
