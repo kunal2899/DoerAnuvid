@@ -29,11 +29,8 @@ import { FindComponent } from './find/find.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-<<<<<<< HEAD
-    HttpClientModule
-=======
+    HttpClientModule,
     BrowserAnimationsModule
->>>>>>> 43d3349678f1999945e5866c6c902cdbe5dc09d8
   ],
   providers: [AuthenticationService,DatabaseService],
   bootstrap: [AppComponent]
