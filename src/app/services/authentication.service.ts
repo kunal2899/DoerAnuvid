@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
@@ -8,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthenticationService {
 url=environment.URL
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private router:Router) { }
 
   loginUser(usercred){
     let header=new HttpHeaders({
@@ -46,15 +47,30 @@ url=environment.URL
     sessionStorage.setItem("NAME",fname+" "+lname);
   }
   getName(){
-    sessionStorage.getItem("NAME");
+    return sessionStorage.getItem("NAME");
   }
   isUserLoggedIn(){
     return sessionStorage.getItem("TOKEN")!=undefined ||  sessionStorage.getItem("TOKEN")!=null
   }
 
+  logoutUser(){
+    let header=new HttpHeaders({
+      "Authorization":"Token "+this.getToken()
+    })
+    return this.http.post(`${this.url}/logout`,{headers:header}).pipe(
+      tap((data:any)=>{
+        console.log(data);
+      }),
+      catchError((err:any)=>{
+        console.log(err);
+        throw err
+      })
+    )
+  }
   doUserLogin(token,username,fname,lname){
     this.setToken(token);
     this.setName(fname,lname);
     this.setUsername(username);
+    this.router.navigate(['/dashboard']);
   }
 }

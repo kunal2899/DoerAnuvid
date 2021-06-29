@@ -1,87 +1,130 @@
 <div class="container">
     <h1 style="margin-left: 20px;">UPDATE PROFILE</h1>
-    <form #userReg="ngForm" (ngSubmit)="update(userReg.form)">
+    <form [formGroup]="updateForm" (ngSubmit)="update()">
         <!-- <div class="text-danger">{{userReg.value | json}}</div> --><br>
         <div class="form-group" style="margin-top: 20px;">
-            <input type="text" name="name" #name="ngModel" placeholder="Name" pattern="[a-zA-Z' ']{1,20}"
-                [class.notvalid]="name.invalid && name.touched" required autocomplete="off" readonly
-                class="form-control" [(ngModel)]="user.name"><i (click)="edit(name.name)" class="fas fa-pen"></i>
+            <input type="text" #fname name="fname" formControlName="fname" placeholder="First Name" pattern="[a-zA-Z' ']{1,20}"
+                [class.notvalid]="updateForm.get('fname').invalid && updateForm.get('fname').touched" required autocomplete="off" readonly
+                class="form-control"><i (click)="edit(fname)" class="fas fa-pen"></i>
             <!-- <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name field is required</small> -->
-            <div *ngIf="name.errors && (name.valid || name.touched)">
-                <small class="text-danger" *ngIf="name.errors.required"><i
+            <div *ngIf="updateForm.get('fname').errors && (updateForm.get('fname').valid || updateForm.get('fname').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('fname').errors.required"><i
                         class="far fa-exclamation-circle"></i>&nbsp;Name is required</small>
-                <small class="text-danger" *ngIf="name.errors.pattern"><i
+                <small class="text-danger" *ngIf="updateForm.get('fname').errors.pattern"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Should only contain alphabets (A-Z,a-z)</small>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px;">
+            <input type="text" #lname name="lname" formControlName="lname" placeholder="Last Name" pattern="[a-zA-Z' ']{1,20}"
+                [class.notvalid]="updateForm.get('lname').invalid && updateForm.get('lname').touched" required autocomplete="off" readonly
+                class="form-control"><i (click)="edit(lname)" class="fas fa-pen"></i>
+            <!-- <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name field is required</small> -->
+            <div *ngIf="updateForm.get('lname').errors && (updateForm.get('lname').valid || updateForm.get('lname').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('lname').errors.required"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Name is required</small>
+                <small class="text-danger" *ngIf="updateForm.get('lname').errors.pattern"><i
                         class="far fa-exclamation-circle"></i>&nbsp;Should only contain alphabets (A-Z,a-z)</small>
             </div>
         </div>
         <div class="form-group">
-            <input type="tel" name="mob" #mob="ngModel" [class.notvalid]="mob.invalid && mob.touched"
-                pattern="[0-9]{1,10}" minlength="10" maxlength="10" placeholder="New mobile number" readonly required
-                autocomplete="off" class="form-control" [(ngModel)]="user.mobile"><i (click)="edit(mob.name)"
+            <input type="tel" #mobile1 name="mob" formControlName="mobile1" [class.notvalid]="updateForm.get('mobile1').invalid && updateForm.get('mobile1').touched"
+                pattern="[0-9]{1,10}" minlength="10" maxlength="10" placeholder="New mobile number 1" readonly required
+                autocomplete="off" class="form-control" ><i (click)="edit(mobile1)"
                 class="fas fa-pen"></i>
             <!-- <small class="text-danger" [class.d-none]="mob.valid || mob.untouched">Mobile field is required and must be 10 digits</small> -->
-            <div *ngIf="mob.errors && (mob.valid || mob.touched)">
-                <small class="text-danger" *ngIf="mob.errors.required"><i
+            <div *ngIf="updateForm.get('mobile1').errors && (updateForm.get('mobile1').valid || updateForm.get('mobile1').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('mobile1').errors.required"><i
                         class="far fa-exclamation-circle"></i>&nbsp;Mobile Number is required</small>
-                <small class="text-danger" *ngIf="mob.errors.pattern"><i
+                <small class="text-danger" *ngIf="updateForm.get('mobile1').errors.pattern"><i
                         class="far fa-exclamation-circle"></i>&nbsp;Should only contain numeric values</small>
-                <small class="text-danger" *ngIf="mob.errors.minlength"><i
+                <small class="text-danger" *ngIf="updateForm.get('mobile1').errors.minlength"><i
                         class="far fa-exclamation-circle"></i>&nbsp;Invalid mobile number</small>
             </div>
         </div>
         <div class="form-group">
-            <input type="email" name="mail" #mail="ngModel" [class.notvalid]="mail.invalid && mail.touched"
-                placeholder="New email ID" pattern="[A-Za-z\d\._-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,5})(\.[a-zA-Z]{2,5})?"
-                readonly required autocomplete="off" class="form-control" [(ngModel)]="user.email"><i
-                (click)="edit(mail.name)" class="fas fa-pen"></i>
-            <div *ngIf="mail.errors && (mail.valid || mail.touched)">
-                <small class="text-danger" *ngIf="mail.errors.required"><i
-                        class="far fa-exclamation-circle"></i>&nbsp;Email ID is required</small>
-                <small class="text-danger" *ngIf="mail.errors.pattern"><i
-                        class="far fa-exclamation-triangle"></i>&nbsp;Invalid email address</small>
+            <input type="tel" #mobile2 name="mob" formControlName="mobile2" [class.notvalid]="updateForm.get('mobile2').invalid && updateForm.get('mobile2').touched"
+                pattern="[0-9]{1,10}" minlength="10" maxlength="10" placeholder="New mobile number 2" readonly
+                autocomplete="off" class="form-control" ><i (click)="edit(mobile2)"
+                class="fas fa-pen"></i>
+            <!-- <small class="text-danger" [class.d-none]="mob.valid || mob.untouched">Mobile field is required and must be 10 digits</small> -->
+            <div *ngIf="updateForm.get('mobile2').errors && (updateForm.get('mobile2').valid || updateForm.get('mobile2').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('mobile2').errors.required"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Mobile Number is required</small>
+                <small class="text-danger" *ngIf="updateForm.get('mobile2').errors.pattern"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Should only contain numeric values</small>
+                <small class="text-danger" *ngIf="updateForm.get('mobile2').errors.minlength"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Invalid mobile number</small>
             </div>
         </div>
         <div class="form-group">
-            <input type="text" name="uname" placeholder="New username" #uname="ngModel" pattern="[a-z0-9\._]{1,20}"
-                [class.notvalid]="uname.invalid && uname.touched" required autocomplete="off" class="form-control"
-                readonly [(ngModel)]="user.username"><i (click)="edit(uname.name)" class="fas fa-pen"></i>
-            <div *ngIf="uname.errors && (uname.valid || uname.touched)">
-                <small class="text-danger" *ngIf="uname.errors.required"><i
-                        class="far fa-exclamation-circle"></i>&nbsp;Username is required</small>
-                <small class="text-danger" *ngIf="uname.errors.pattern"><i
-                        class="far fa-exclamation-triangle"></i>&nbsp;Invalid username : It should only contain
-                    alphabetic and numeric characters and not any special characters except '.' and '_'</small>
+            <input type="email" #email name="mail" formControlName="email" [class.notvalid]="updateForm.get('email').invalid && updateForm.get('email').touched"
+                placeholder="New email ID" pattern="[A-Za-z\d\._-]+@[a-zA-Z0-9-]+(\.[a-zA-Z]{2,5})(\.[a-zA-Z]{2,5})?"
+                readonly required autocomplete="off" class="form-control" ><i
+                (click)="edit(email)" class="fas fa-pen"></i>
+            <div *ngIf="updateForm.get('email').errors && (updateForm.get('email').valid || updateForm.get('email').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('email').errors.required"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Email ID is required</small>
+                <small class="text-danger" *ngIf="updateForm.get('email').errors.pattern"><i
+                        class="far fa-exclamation-triangle"></i>&nbsp;Invalid email address</small>
             </div>
         </div>
-        <input style="width: 10px; height: 10px; margin-left: 10px;" name="qw" id="qw" hidden type="checkbox"><label
-            style="padding: 5px; margin-left: 20px; font-size: 12px;" id="here" for="qw">Do you want to change your
-            current password?</label><label style="padding: 5px; margin-left: 20px; font-size: 12px; display: none;"
-            for="qw" id="nohere">No, i don't want to change my password!</label>
-        <div class="form-group newpass" style="display: none;">
-            <input id="newp" type="password" style="width: 19em; margin-left: 10px;" name="npwd"
-                placeholder="New Password" [class.notvalid]="npwd.invalid && npwd.touched" aria-required="false"
-                required="false" #npwd="ngModel"
-                pattern="(?=.*[%$+@=#!?_*-])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9?*@!_\.#$%&-=+]{8,}"
-                autocomplete="off" class="form-control" [(ngModel)]="pass">
-            <div *ngIf="npwd.errors && (npwd.valid || npwd.touched)">
-                <small class="text-danger" *ngIf="npwd.errors.required"><i
-                        class="far fa-exclamation-circle"></i>&nbsp;New Password is required</small>
-                <small class="text-danger" *ngIf="npwd.errors.pattern"><i
-                        class="far fa-exclamation-triangle"></i>&nbsp;Invalid password : It should of minimum 8
-                    characters and a combination of uppercase letter(A-Z), lowercase letter(a-z), digits(0-9) & special
-                    characters(!@#$%...)</small>
+        
+        <div class="form-group">
+            <input type="text" #address1 name="mail" formControlName="address1" [class.notvalid]="updateForm.get('address1').invalid && updateForm.get('address1').touched"
+                placeholder="New Address Line 1" readonly required autocomplete="off" class="form-control"><i
+                (click)="edit(address1)" class="fas fa-pen"></i>
+            <div *ngIf="updateForm.get('address1').errors && (updateForm.get('address1').valid || updateForm.get('address1').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('address1').errors.required"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Address line 1 is required</small>
             </div>
         </div>
-        <hr>
-        <input type="password" id="cpwd" class="cpwd" placeholder="Current Password"
-            [class.notvalid]="cpwd.invalid && cpwd.touched" name="cpwd" #cpwd="ngModel" [(ngModel)]="currpass" required
-            autocomplete="off">
+        
+        <div class="form-group">
+            <input type="text" name="mail" formControlName="address2" [class.notvalid]="updateForm.get('address2').invalid && updateForm.get('address2').touched"
+                placeholder="New Address Line 2" readonly autocomplete="off" class="form-control"><i
+                (click)="edit(updateForm.get('address1'))" class="fas fa-pen"></i>
+            <div *ngIf="updateForm.get('address1').errors && (updateForm.get('address1').valid || updateForm.get('address1').touched)">
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px;">
+            <input type="text" #city name="city" formControlName="city" placeholder="City Name" pattern="[a-zA-Z' ']{1,20}"
+                [class.notvalid]="updateForm.get('city').invalid && updateForm.get('city').touched" required autocomplete="off" readonly
+                class="form-control"><i (click)="edit(city)" class="fas fa-pen"></i>
+            <!-- <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name field is required</small> -->
+            <div *ngIf="updateForm.get('city').errors && (updateForm.get('city').valid || updateForm.get('city').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('city').errors.required"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;City Name is required</small>
+                <small class="text-danger" *ngIf="updateForm.get('city').errors.pattern"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Should only contain alphabets (A-Z,a-z)</small>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px;">
+            <input type="text"#state name="state" formControlName="state" placeholder="State Name" pattern="[a-zA-Z' ']{1,20}"
+                [class.notvalid]="updateForm.get('state').invalid && updateForm.get('state').touched" required autocomplete="off" readonly
+                class="form-control"><i (click)="edit(state)" class="fas fa-pen"></i>
+            <!-- <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name field is required</small> -->
+            <div *ngIf="updateForm.get('state').errors && (updateForm.get('state').valid || updateForm.get('state').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('state').errors.required"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;State Name is required</small>
+                <small class="text-danger" *ngIf="updateForm.get('state').errors.pattern"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Should only contain alphabets (A-Z,a-z)</small>
+            </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px;">
+            <input type="text" #pincode name="pincode" formControlName="pincode" placeholder="Pincode" pattern="[0-9]{6}"
+                [class.notvalid]="updateForm.get('pincode').invalid && updateForm.get('pincode').touched" required autocomplete="off" readonly
+                class="form-control"><i (click)="edit(pincode)" class="fas fa-pen"></i>
+            <!-- <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name field is required</small> -->
+            <div *ngIf="updateForm.get('pincode').errors && (updateForm.get('pincode').valid || updateForm.get('pincode').touched)">
+                <small class="text-danger" *ngIf="updateForm.get('pincode').errors.required"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Pincode is required</small>
+                <small class="text-danger" *ngIf="updateForm.get('pincode').errors.pattern"><i
+                        class="far fa-exclamation-circle"></i>&nbsp;Should only contain 6 digit number</small>
+            </div>
+        </div>
+        
         <input type="submit" value="UPDATE" class="sub">
-        <div style="margin-top: -10px; margin-left: 30px;" *ngIf="cpwd.errors && (cpwd.valid || cpwd.touched)">
-            <marquee behavior="slide" direction="down"><small class="text-danger" style="margin-top: 0px;"
-                    *ngIf="cpwd.errors.required"><i class="far fa-exclamation-triangle"></i>&nbsp;Current Password is
-                    required for updation</small></marquee>
-        </div>
+        
     </form>
     <div class="text-danger emsg" *ngIf="emsg">{{emsg}}</div>
     <div class="text-success emsg" *ngIf="smsg">{{smsg}}</div>

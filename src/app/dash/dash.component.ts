@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { pathToFileURL } from 'url';
 
@@ -9,8 +10,8 @@ import { pathToFileURL } from 'url';
 })
 export class DashComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private router:Router) { }
+  
   ngOnInit(): void {
     var path = window.location.href.split("/");
     let p = "/dashboard/"+path[path.length-1];
@@ -27,5 +28,7 @@ export class DashComponent implements OnInit {
         })
       })
   }
-
+  logoutUser(){
+    this.router.navigate(['']);
+  }
 }

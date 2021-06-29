@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as $ from 'jquery';
 import { AuthenticationService } from '../services/authentication.service';
 import { DatabaseService } from '../services/database.service';
@@ -11,7 +12,7 @@ import { DatabaseService } from '../services/database.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private db:DatabaseService,private auth:AuthenticationService) { }
+  constructor(private router:Router,private db:DatabaseService,private auth:AuthenticationService) { }
 
   loginForm=new FormGroup({
     username:new FormControl("",Validators.required),
@@ -63,8 +64,6 @@ export class LoginComponent implements OnInit {
       "password":this.loginForm.get('password').value
     }
     this.auth.loginUser(body).subscribe(data=>{
-      // console.log(data)
-      alert("Logged In");
     })
   }
   registerUser(){
@@ -87,7 +86,6 @@ export class LoginComponent implements OnInit {
       "mobile2":this.registerForm.get('mobile2').value
     })
     this.db.registerUser(body).subscribe(data=>{
-      alert("user registered Successfully");
     })
   }
 }

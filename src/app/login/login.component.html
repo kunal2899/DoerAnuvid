@@ -1,7 +1,7 @@
 <div class="containers mt-5">
     <div class="login">
         <h1 style="color: white;" class="mt-5 mb-4">Login</h1>
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser();">
             <div class="form-group">
                 <input type="text" name="uname" placeholder="Username" [class.notvalid]="loginForm.get('username').invalid && loginForm.get('username').touched" required
                     autocomplete=off class="form-control" formControlName="username">

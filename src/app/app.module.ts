@@ -13,6 +13,8 @@ import { DashComponent } from './dash/dash.component';
 import { HomeComponent } from './home/home.component';
 import { UpdateComponent } from './update/update.component';
 import { FindComponent } from './find/find.component';
+import { AuthGuard } from './services/auth.guard';
+import { DeAuthGuard } from './services/de-auth.guard';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,7 @@ import { FindComponent } from './find/find.component';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthenticationService,DatabaseService],
+  providers: [AuthenticationService,DatabaseService,AuthGuard,DeAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
