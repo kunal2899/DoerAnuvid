@@ -1,0 +1,18 @@
+<div class="dash-container">
+    <div class="part">
+        <div class="brand">DoerAnuvid</div>
+        <hr>
+        <div class="nav-links">
+            <ul>
+                <li><a href="/dashboard/home" routerLink="home" class="active"><i class="fal fa-home-lg"></i>Home</a></li>
+                <li><a href="/dashboard/update-profile" routerLink="update-profile"><i class="fal fa-user-edit"></i>Update Profile</a></li>
+                <li><a href="/dashboard/find-services" routerLink="find-services"><i class="fal fa-search"></i>Find Services</a></li>
+                <hr>
+                <li><a href="#" class="text-danger alert alert-danger"><i class="fal fa-sign-out"></i>Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+</div>
