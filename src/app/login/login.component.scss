@@ -1,0 +1,214 @@
+.containers{
+    width: 450px;
+    max-width: 500px;
+    min-height: 80%;
+    overflow: hidden;
+    border: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    padding: 25px 40px;
+    text-align: center;
+    background-color: rgb(15, 15, 15);
+    box-shadow: 10px 0 10px black;
+    transition: 0.8s;
+    font-family: 'Montserrat', 'Monte';
+    .login{
+        input[type=text],
+input[type=password]{
+    height: 50px;
+    padding: 12px 10px;
+    margin-top: 15px;
+
+}
+    }
+}
+small{
+    display: block;
+    margin: 0 30px;
+    margin-top: 5px;
+    /* font-size: 12px; */
+}
+
+.containers .login,
+.containers .reg{
+    width: 100%;
+}
+
+.containers .reg{
+    display: none;
+}
+
+.containers .login{
+    padding: 50px 0px;
+}
+
+/* .containers .reg{
+    transform: rotateY(180deg);
+} */
+
+
+.containers .login h1{
+    text-transform: uppercase;
+    font-family: 'Montserrat', 'Monte';
+    letter-spacing: 3px;
+    font-size: 2em;
+    font-weight: 600;
+    color: whitesmoke;
+    margin-bottom: 30px;
+}
+.containers .reg h1{
+    text-transform: uppercase;
+    font-family: 'Montserrat', 'Monte';
+    letter-spacing: 3px;
+    font-size: 2em;
+    font-weight: 600;
+    color: whitesmoke;
+}
+
+.containers input[type=text],
+.containers input[type=password],
+.containers input[type=email],
+.containers input[type=tel]{
+    background: none;
+    text-align: center;
+    font-size: 14px;
+    height: 40px;
+    display: inline-block;
+    border: 2px solid cornflowerblue;
+    border-radius: 50px;
+    width: 15em;
+    transition: .25s;
+    color: white;
+    outline: none; 
+}
+
+.containers .login input[type=password],
+.pass input{
+    transition: .25s width;
+    font-family: 'Consolas';
+    letter-spacing: 2px;
+}
+
+.pass input::placeholder{
+    font-family: 'Montserrat', 'Monte';
+    letter-spacing: 0px;
+}
+
+.sub{
+   padding: 10px 30px; 
+   border: 2px solid orangered;
+   border-radius: 50px;
+   background: none;
+   color: white;
+   margin-top: 10px;
+   margin-bottom: 20px;
+   outline: none;
+   transition: .5s;
+   cursor: pointer;
+}
+
+.login .sub{
+    margin-bottom: 40px;
+}
+
+.containers input[type=text]:focus,
+.containers input[type=password]:focus,
+.containers input[type=email]:focus,
+.containers input[type=tel]:focus{
+    width: 19em;
+    border: 2px solid greenyellow;
+}
+
+.sub:hover{
+    background: orangered;
+}
+
+.containers h4{
+    color: white;
+    font-family: 'Montserrat', 'Monte';
+    font-weight: 400;
+    margin-top: 9px;
+    margin-right: 10px;
+    pointer-events: none;
+}
+
+.containers .sign{
+    color: white;
+    border: 2px solid mediumspringgreen;
+    background: none;
+    border-radius: 50px;
+    padding: 5px 20px;
+    /* display: inline-block; */
+    transition: .25s;
+    cursor: pointer;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+.containers .sign:hover{
+    background: mediumspringgreen;
+    color: black;
+}
+
+.containers .divine{
+    display: inline-flex;
+    font-family: 'Montserrat', 'Monte';
+    transition: .5s;
+    h4{
+        font-size: 13px;
+    }
+    button{
+        font-size: 13px;
+    }
+}
+
+hr{
+    border: 1px solid rgb(44, 44, 44);
+    margin-bottom: 25px;
+    margin-top: 20px;
+}
+
+.login hr{
+    margin-bottom: 30px;
+}
+
+.login label{
+    color: white;
+    transition: .5s;
+}
+
+.login a{
+    text-decoration: none;
+    transition: .25s;
+    display: block;
+}
+
+.login .divine{
+    margin-top: 20px;
+}
+
+.form-control{
+    box-shadow: none;
+}
+
+.notvalid{
+    box-shadow: 0 0 10px red;
+}
+
+#eye{
+    color: rgba(255, 255, 255, 0.288);
+    transition: .25s;
+    pointer-events: stroke;
+    z-index: 2;
+}
+
+#eye:hover{
+    color: white;
+}
