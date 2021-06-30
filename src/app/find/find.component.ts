@@ -33,7 +33,7 @@ export class FindComponent implements OnInit {
   searchForm = new FormGroup({
     query: new FormControl(""),
     city: new FormControl(""),
-    category: new FormControl("service"),
+    category: new FormControl(""),
   })
   ngOnInit(): void {
     $('.card-main .close').on('click', function () {
