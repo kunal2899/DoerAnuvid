@@ -10,10 +10,11 @@ import { DatabaseService } from '../services/database.service';
 })
 export class FindComponent implements OnInit {
 
-  constructor(private db:DatabaseService) { }
+  constructor(private db: DatabaseService) { }
   searchResults
   mainCardResult
   open(id) {
+    this.cardLoaded = true;
     this.mainCardResult=undefined
     $('.container').addClass('blur');
     $('.results').addClass('blur');
@@ -24,10 +25,15 @@ export class FindComponent implements OnInit {
       }
     })
   }
-  searchForm=new FormGroup({
-    query:new FormControl(""),
-    city:new FormControl(""),
-    category:new FormControl(""),
+  searching = false
+  loaded = false
+
+  cardLoaded = false
+
+  searchForm = new FormGroup({
+    query: new FormControl(""),
+    city: new FormControl(""),
+    category: new FormControl("service"),
   })
   ngOnInit(): void {
     $('.card-main .close').on('click', function () {

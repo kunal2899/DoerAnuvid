@@ -32,7 +32,7 @@
         </select>
         
     </div>
-    <div *ngIf="!searchResults">
+    <div *ngIf="!searching && !searchResults">
         <div class="predefined">
             <div class="service">
                 <i class="fas fa-wrench"></i>
@@ -95,6 +95,16 @@
     <div class="col-lg-3 col-xl-3" *ngFor="let i of searchResults">
         <div class="card" (click)="open(i.id)">
             <div class="open">OPEN</div>
+        <div class="container">
+    <i class="fas fa-circle-notch"></i>
+    </div>
+<!-- <div class="results row" *ngIf="!searching && loaded && searchResults">
+    <div class="col-lg-3 col-xl-3">
+        <div class="card" (click)="open(i.id)">
+            <div class="open">
+                <span *ngIf="!cardLoaded">OPEN</span>
+                <span *ngIf="cardLoaded"><i class="fas fa-circle-notch"></i></span>
+            </div> -->
             <div class="content">
                 <h3 class="s_name">{{i.service_name}}</h3>
                 <h4 class="scat">{{i.service_category}}</h4>

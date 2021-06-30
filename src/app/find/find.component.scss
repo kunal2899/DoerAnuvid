@@ -1,6 +1,19 @@
 .blur{
     filter: blur(10px);
 }
+.scontainer{
+    height: 100%;
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    i{
+        font-size: 5em;
+        color: white;
+        animation: spin .85s infinite;
+    }
+}
 .card-main{
     position: fixed;
     width: 500px;
@@ -152,6 +165,10 @@
             opacity: 0;
             visibility: hidden;
             transition: .25s;
+            i{
+                animation: spin 1s infinite;
+                font-size: 2em;
+            }
         }
         &:hover > .content{
             filter: blur(2px);

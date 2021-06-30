@@ -11,6 +11,7 @@ import { pathToFileURL } from 'url';
 export class DashComponent implements OnInit {
 
   constructor(private router:Router) { }
+  process = false;
   
   ngOnInit(): void {
     var path = window.location.href.split("/");
@@ -30,5 +31,6 @@ export class DashComponent implements OnInit {
   }
   logoutUser(){
     this.router.navigate(['/login']);
+    this.process = true;
   }
 }
