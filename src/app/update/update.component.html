@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container scontainer" *ngIf="!loaded">
+<i class="fas fa-circle-notch"></i>
+</div>
+<div class="container" *ngIf="loaded">
     <h1 style="margin-left: 20px;">UPDATE PROFILE</h1>
     <form [formGroup]="updateForm" (ngSubmit)="update()">
         <!-- <div class="text-danger">{{userReg.value | json}}</div> --><br>
@@ -123,7 +126,10 @@
             </div>
         </div>
         
-        <input type="submit" value="UPDATE" class="sub">
+        <button type="submit" class="sub">
+            <span *ngIf="process"><i style="animation: spin 1s infinite;" class="fas fa-circle-notch"></i></span>
+            <span *ngIf="!process">UPDATE</span>
+        </button>
         
     </form>
     <div class="text-danger emsg" *ngIf="emsg">{{emsg}}</div>

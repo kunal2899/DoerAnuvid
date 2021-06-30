@@ -15,9 +15,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     else{
-      alert("Need to login to view dashboard");
-      this.router.navigate(['login']);
-
+      this.router.navigate(['forbidden']);
     }
   }
   

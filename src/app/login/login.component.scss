@@ -112,6 +112,10 @@ small{
    outline: none;
    transition: .5s;
    cursor: pointer;
+   i{
+    //    font-size: 20px;
+       animation: spin 1s infinite;
+   }
 }
 
 .login .sub{

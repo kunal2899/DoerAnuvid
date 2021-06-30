@@ -14,6 +14,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private router:Router,private db:DatabaseService,private auth:AuthenticationService) { }
 
+  process = false;
+  rprocess = false;
+
   loginForm=new FormGroup({
     username:new FormControl("",Validators.required),
     password:new FormControl("",Validators.required)
@@ -59,15 +62,17 @@ export class LoginComponent implements OnInit {
     });
   }
   loginUser(){
+    this.process = true;
     let body={
       "username":this.loginForm.get('username').value,
       "password":this.loginForm.get('password').value
     }
     this.auth.loginUser(body).subscribe(data=>{
+      this.process = false;
     })
   }
   registerUser(){
-    alert("working");
+    this.rprocess = true;
     let body=new Array
     body.push({
       "username": this.registerForm.get("username").value,
@@ -86,6 +91,7 @@ export class LoginComponent implements OnInit {
       "mobile2":this.registerForm.get('mobile2').value
     })
     this.db.registerUser(body).subscribe(data=>{
+      this.rprocess = false
     })
   }
 }

@@ -15,6 +15,8 @@ import { UpdateComponent } from './update/update.component';
 import { FindComponent } from './find/find.component';
 import { AuthGuard } from './services/auth.guard';
 import { DeAuthGuard } from './services/de-auth.guard';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { DeAuthGuard } from './services/de-auth.guard';
     DashComponent,
     HomeComponent,
     UpdateComponent,
-    FindComponent
+    FindComponent,
+    ForbiddenComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

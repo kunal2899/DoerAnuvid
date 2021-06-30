@@ -15,7 +15,10 @@
                         class="fas fa-eye"></i></span>
                 <small class="text-danger" [class.d-none]="loginForm.get('password').valid || loginForm.get('password').untouched">Password is required</small>
             </div><br>
-            <button type="submit" value="LOGIN" class="sub">LOGIN</button>
+            <button type="submit" value="LOGIN" class="sub">
+                <span *ngIf="process"><i class="fas fa-circle-notch"></i></span>
+                <span *ngIf="!process">LOGIN</span>
+            </button>
             <hr>
             <!-- [class.d-none]="((lpwd.invalid && lpwd.touched)&&(luname.invalid && luname.touched))" -->
             <div class="divine">
@@ -123,7 +126,11 @@
                     <small class="text-danger" *ngIf="registerForm.get('password').errors.pattern">Invalid password</small>
                 </div>
             </div>
-            <input type="submit" value="REGISTER" class="sub"><br>
+            <button type="submit" class="sub">
+                <span *ngIf="rprocess"><i class="fas fa-circle-notch"></i></span>
+                <span *ngIf="!rprocess">REGISTER</span>
+            </button>
+            <br>
             <hr>
             <!-- [class.d-none]="(name.invalid && name.touched)||(add.invalid && add.touched)||(mob.invalid && mob.touched)||(mail.invalid && mail.touched)||(uname.invalid && uname.touched)||(pwd.invalid && pwd.touched)" -->
             <div class="divine">

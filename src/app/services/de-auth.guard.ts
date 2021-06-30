@@ -12,6 +12,9 @@ export class DeAuthGuard implements CanDeactivate<AuthenticationService> {
     if(confirm("Are you sure you want to Logout ?"))
     {
       this.auth.logoutUser().subscribe();
+      sessionStorage.removeItem("NAME")
+      sessionStorage.removeItem("TOKEN")
+      sessionStorage.removeItem("USERNAME")
       return true;
     } 
     else return false;

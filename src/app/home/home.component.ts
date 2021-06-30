@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   u_name:any;
 
   ngOnInit(): void {
-    this.u_name=this.auth.getName();
+    this.u_name=this.auth.getName().split(" ")[0];
   }
 
 }

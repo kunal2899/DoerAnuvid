@@ -31,6 +31,8 @@ export class UpdateComponent implements OnInit {
   ud:UpdateDTO
   emsg = ''
   smsg = ''
+  loaded = false
+  process = false
 
   constructor(private db:DatabaseService) { }
 
@@ -55,6 +57,7 @@ export class UpdateComponent implements OnInit {
   })
   loadUser(){
     this.db.getUserDetails().subscribe((data:any)=>{
+      this.loaded = true;
       this.updateForm.get("fname").setValue(data[0].first_name);
       this.updateForm.get("lname").setValue(data[0].last_name);
       this.updateForm.get("email").setValue(data[0].email);
@@ -69,6 +72,7 @@ export class UpdateComponent implements OnInit {
     });
   }
 update(){
+  this.process = true;
   let details=[{
     // "username": this.updateForm.get("username").value,
     "email": this.updateForm.get("email").value,
@@ -85,6 +89,7 @@ update(){
   "mobile2":this.updateForm.get("mobile2").value
 }]
   this.db.updateUserDetails(details).subscribe((data:any)=>{
+    this.process = false;
     this.updateForm.get("fname").setValue(data[0].first_name);
       this.updateForm.get("lname").setValue(data[0].last_name);
       this.updateForm.get("email").setValue(data[0].email);
@@ -96,6 +101,10 @@ update(){
       this.updateForm.get("state").setValue(data[1].state);
       this.updateForm.get("city").setValue(data[1].city);
       this.updateForm.get("pincode").setValue(data[1].pincode);
+    },
+    error=>{
+      alert("Some error occurred, Please try again later :(")
+      this.process = false;
     });
 }
   // update(f:FormGroup){

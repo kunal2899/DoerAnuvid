@@ -32,7 +32,7 @@
         </select>
         
     </div>
-    <div *ngIf="!searchResults">
+    <div *ngIf="!searching && !searchResults">
         <div class="predefined">
             <div class="service">
                 <i class="fas fa-wrench"></i>
@@ -95,10 +95,16 @@
             remaining essentially unchanged.</p>
     </div>
 </div>
-<div class="results row" *ngIf="searchResults">
+<div class="container scontainer" *ngIf="searching && !loaded">
+    <i class="fas fa-circle-notch"></i>
+    </div>
+<div class="results row" *ngIf="!searching && loaded && searchResults">
     <div class="col-lg-3 col-xl-3">
         <div class="card" (click)="open()">
-            <div class="open">OPEN</div>
+            <div class="open">
+                <span *ngIf="!cardLoaded">OPEN</span>
+                <span *ngIf="cardLoaded"><i class="fas fa-circle-notch"></i></span>
+            </div>
             <div class="content">
                 <h3 class="s_name">service_name</h3>
                 <h4 class="scat">service_category</h4>
