@@ -12,14 +12,7 @@ url=environment.URL
   constructor(private http:HttpClient,private router:Router) { }
 
   loginUser(usercred){
-    let header=new HttpHeaders({
-      "ACCESS-CONTROL-ALLOW-ORIGIN":"*",
-      "Access-Control-Allow-Methods":"GET, POST, OPTIONS, DELETE, PUT",
-      'Accept': 'application/json',
-      'Content-Type':'application/json',
-    })
-   
-    return this.http.post(`${this.url}/login/`,usercred,{headers:header}).pipe(
+    return this.http.post(`${this.url}/login/`,usercred).pipe(
       tap((data:any)=>{
         console.log(data);
         if(data.success==1)
@@ -57,9 +50,13 @@ url=environment.URL
     let header=new HttpHeaders({
       "Authorization":"Token "+this.getToken()
     })
-    return this.http.post(`${this.url}/logout`,{headers:header}).pipe(
+    return this.http.post(`${this.url}/logout/`,null,{headers:header}).pipe(
       tap((data:any)=>{
         console.log(data);
+        sessionStorage.removeItem("NAME");
+        sessionStorage.removeItem("USERNAME");
+        sessionStorage.removeItem("TOKEN");
+        
       }),
       catchError((err:any)=>{
         console.log(err);

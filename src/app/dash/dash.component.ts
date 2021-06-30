@@ -29,6 +29,6 @@ export class DashComponent implements OnInit {
       })
   }
   logoutUser(){
-    this.router.navigate(['']);
+    this.router.navigate(['/login']);
   }
 }

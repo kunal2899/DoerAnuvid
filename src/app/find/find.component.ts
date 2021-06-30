@@ -12,11 +12,17 @@ export class FindComponent implements OnInit {
 
   constructor(private db:DatabaseService) { }
   searchResults
-
-  open() {
+  mainCardResult
+  open(id) {
+    this.mainCardResult=undefined
     $('.container').addClass('blur');
     $('.results').addClass('blur');
     $('.card-main').addClass('active');
+    this.searchResults.forEach((data:any)=>{
+      if(data.id==id){
+        this.mainCardResult=data;
+      }
+    })
   }
   searchForm=new FormGroup({
     query:new FormControl(""),
@@ -29,16 +35,18 @@ export class FindComponent implements OnInit {
       $('.results').removeClass('blur');
       $('.card-main').removeClass('active');
     })
-    }
+  }
 searchResult(){
   alert("called");
       let params={
-        "query":this.searchForm.get("query").value,
-        "category":this.searchForm.get("category").value,
+        "query":this.searchForm.get("query").value!="null"?this.searchForm.get("query").value:null,
+        "category":this.searchForm.get("category").value!="null"?this.searchForm.get("category").value:null,
         "city":this.searchForm.get("city").value
       }
+      console.log(params);
     this.db.getSearchResult(params).subscribe((data:any)=>{
       this.searchResults=data;  
     });
     }
+  
 }
